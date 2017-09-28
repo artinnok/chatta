@@ -13,7 +13,7 @@ TRAFARET = trafaret.Dict({
 def get_config():
     BASE_PATH = os.getcwd()
 
-    config = read_and_validate(BASE_PATH + '/config.yml', TRAFARET)
+    config = read_and_validate(BASE_PATH + '/settings.yml', TRAFARET)
     config['base_path'] = BASE_PATH
 
     return config
