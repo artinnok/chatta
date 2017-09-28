@@ -2,3 +2,4 @@ aiohttp==2.2.5
 asyncpg==0.12.0
 trafaret_config==1.0.1
 aiohttp_debugtoolbar==0.4.1
+aiohttp_jinja2==0.14.0
