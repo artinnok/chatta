@@ -22,6 +22,11 @@ if __name__ == '__main__':
     config = read_and_validate(path + '/config.yml', TRAFARET)
 
     app = web.Application()
+    app['config'] = config
     app.router.add_get('/', index)
 
-    web.run_app(app, port=7777)
+    web.run_app(
+        app=app,
+        host=app['config']['host'],
+        port=app['config']['port'],
+    )
