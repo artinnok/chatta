@@ -1,5 +1,5 @@
-from config.bootstrap import get_config
 from chat.views import add_message
+from config.bootstrap import get_config
 
 
 def setup_routes(router):

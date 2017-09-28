@@ -3,8 +3,8 @@ import aiohttp_jinja2
 import aiohttp_debugtoolbar
 from aiohttp import web
 
-from config.bootstrap import get_config
 from chat.routes import setup_routes
+from config.bootstrap import get_config
 
 
 def setup_third_party(app):
