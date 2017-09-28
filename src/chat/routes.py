@@ -2,7 +2,7 @@ from config.bootstrap import get_config
 from chat.views import add_message
 
 
-def set_routes(router):
+def setup_routes(router):
     config = get_config()
 
     router.add_get('/add', add_message)
