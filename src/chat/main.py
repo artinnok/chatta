@@ -2,6 +2,9 @@ import os
 
 import trafaret as T
 from aiohttp import web
+import aiohttp_jinja2
+import aiohttp_debugtoolbar
+import jinja2
 from trafaret_config import read_and_validate
 
 
@@ -11,15 +14,19 @@ TRAFARET = T.Dict({
 })
 
 
+@aiohttp_jinja2.template('index.html')
 async def add_message(request):
-    return web.Response(text='Hello, world')
+    return {'text': 'Hello, world!'}
 
 
 if __name__ == '__main__':
-    path = os.getcwd()
-    config = read_and_validate(path + '/config.yml', TRAFARET)
+    BASE_PATH = os.getcwd()
+    config = read_and_validate(BASE_PATH + '/config.yml', TRAFARET)
 
-    app = web.Application()
+    app = web.Application(middlewares=[aiohttp_debugtoolbar.toolbar_middleware_factory])
+    aiohttp_debugtoolbar.setup(app)
+    aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader(BASE_PATH + '/templates'))
+
     app.router.add_get('/add', add_message)
 
     web.run_app(
