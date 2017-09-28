@@ -8,9 +8,10 @@ import jinja2
 from trafaret_config import read_and_validate
 
 
+# конфиг
 TRAFARET = T.Dict({
     T.Key('host'): T.IP,
-    T.Key('port'): T.Int()
+    T.Key('port'): T.Int(),
 })
 
 
@@ -20,13 +21,16 @@ async def add_message(request):
 
 
 if __name__ == '__main__':
+    # конфиг
     BASE_PATH = os.getcwd()
     config = read_and_validate(BASE_PATH + '/config.yml', TRAFARET)
 
+    # инициализация приложения
     app = web.Application(middlewares=[aiohttp_debugtoolbar.toolbar_middleware_factory])
     aiohttp_debugtoolbar.setup(app)
     aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader(BASE_PATH + '/templates'))
 
+    # роутинг
     app.router.add_get('/add', add_message)
 
     web.run_app(
