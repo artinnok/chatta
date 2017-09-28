@@ -32,6 +32,7 @@ if __name__ == '__main__':
 
     # роутинг
     app.router.add_get('/add', add_message)
+    app.router.add_static('/static', BASE_PATH + '/static')
 
     web.run_app(
         app=app,
