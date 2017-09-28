@@ -17,6 +17,7 @@ if __name__ == '__main__':
 
     app = web.Application(
         middlewares=[aiohttp_debugtoolbar.toolbar_middleware_factory],
+        debug=True,
     )
 
     setup_third_party(app)

@@ -8,7 +8,8 @@ $(document).ready(function () {
                 "text": text
             },
             function (data) {
-                console.log(data);
+                var div = '<div class="chat__message">' + data['text'] + '</div>';
+                $('.chat__history').append(div);
             }
         );
     });

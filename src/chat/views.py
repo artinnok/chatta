@@ -11,5 +11,5 @@ async def add_message(request):
     result = await request.post()
 
     return web.json_response({
-        'ok': True,
+        'text': result['text'],
     })
