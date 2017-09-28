@@ -99,3 +99,21 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# PyCharm
+.idea/
+.idea_modules/
+
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100gs
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# python-dotenv
+*.env
